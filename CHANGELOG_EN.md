@@ -17,6 +17,8 @@
 
 ### Improvements
 
+- docs: |Deploy Config| Update the current deployment's default mailbox service domain to `tapcanvas.uk`
+
 ## v1.9.0
 
 ### Features

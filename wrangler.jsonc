@@ -16,10 +16,10 @@
   "vars": {
     "PREFIX": "tmp",
     "DEFAULT_DOMAINS": [
-      "12580.xyz"
+      "tapcanvas.uk"
     ],
     "DOMAINS": [
-      "12580.xyz"
+      "tapcanvas.uk"
     ],
     "JWT_SECRET": "9e734553887e26c551984a41c5dbd5fe3d6579dc33d9464afc185ca6e05af6ea",
     "ADMIN_PASSWORDS": [

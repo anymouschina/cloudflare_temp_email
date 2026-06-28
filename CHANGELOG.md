@@ -17,6 +17,8 @@
 
 ### Improvements
 
+- docs: |部署配置| 将当前部署的默认邮箱服务域名更新为 `tapcanvas.uk`
+
 ## v1.9.0
 
 ### Features
