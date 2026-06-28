@@ -11,6 +11,10 @@
     {
       "pattern": "api.12580.xyz",
       "custom_domain": true
+    },
+    {
+      "pattern": "api.tapcanvas.uk",
+      "custom_domain": true
     }
   ],
   "vars": {
