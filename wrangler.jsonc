@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "tempemail-api",
+  "name": "tempemail",
   "main": "worker/src/worker.ts",
   "compatibility_date": "2026-06-28",
   "compatibility_flags": [
