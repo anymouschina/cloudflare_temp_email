@@ -1,0 +1,39 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tempemail-api",
+  "main": "worker/src/worker.ts",
+  "compatibility_date": "2026-06-28",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "keep_vars": true,
+  "routes": [
+    {
+      "pattern": "api.12580.xyz",
+      "custom_domain": true
+    }
+  ],
+  "vars": {
+    "PREFIX": "tmp",
+    "DEFAULT_DOMAINS": [
+      "12580.xyz"
+    ],
+    "DOMAINS": [
+      "12580.xyz"
+    ],
+    "JWT_SECRET": "9e734553887e26c551984a41c5dbd5fe3d6579dc33d9464afc185ca6e05af6ea",
+    "ADMIN_PASSWORDS": [
+      "uTFXp/+WSX1hQeJKv4neuYhVfAi6wknm"
+    ],
+    "ENABLE_USER_CREATE_EMAIL": true,
+    "ENABLE_USER_DELETE_EMAIL": true,
+    "FRONTEND_URL": "https://mail.12580.xyz"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "tempemail-db",
+      "database_id": "32d4206d-9eff-46dc-a927-dcd7431d005a"
+    }
+  ]
+}
