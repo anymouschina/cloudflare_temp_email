@@ -38,15 +38,30 @@ async function email(message: ForwardableEmailMessage, env: Bindings, ctx: Execu
         console.error("check junk mail error", error);
     }
 
-    // check if unknown address mail
+    // check if unknown address mail — auto-create if missing
     try {
         const emailRuleSettings = await getJsonSetting<EmailRuleSettings>(
             { env: env } as Context<HonoCustomType>, CONSTANTS.EMAIL_RULE_SETTINGS_KEY
         );
         if (emailRuleSettings?.blockReceiveUnknowAddressEmail) {
-            const db_address_id = await env.DB.prepare(
+            let db_address_id = await env.DB.prepare(
                 `SELECT id FROM address where name = ? `
             ).bind(toAddress).first("id");
+            if (!db_address_id) {
+                // Auto-create address if it doesn't exist, so Cloudflare Email
+                // Routing delivers mails even for addresses not created via API.
+                try {
+                    await env.DB.prepare(
+                        `INSERT INTO address (name) VALUES (?)`
+                    ).bind(toAddress).run();
+                    db_address_id = await env.DB.prepare(
+                        `SELECT id FROM address where name = ? `
+                    ).bind(toAddress).first("id");
+                    console.log(`Auto-created address: ${toAddress}`);
+                } catch (insertError) {
+                    console.error("auto-create address error", insertError);
+                }
+            }
             if (!db_address_id) {
                 message.setReject("Unknown address");
                 console.log(`Unknown address mail from ${message.from} to ${toAddress}`);
